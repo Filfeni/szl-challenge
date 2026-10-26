@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"strings"
+
 	"github.com/Filfeni/calculator/backend/internal/calculator"
 )
 
@@ -82,7 +83,7 @@ func handleCalculate(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, CalculateResponse{Operation: req.Operation, A: *req.A, B: req.B, Result: result})
 }
 
-// mapError translates domain errors into HTTP status codes 
+// mapError translates domain errors into HTTP status codes
 
 func mapError(err error) (int, string) {
 	switch {
