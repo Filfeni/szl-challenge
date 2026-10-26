@@ -35,6 +35,14 @@ export default function Calculator() {
   const op = getOperation(operation);
   const needsB = op.arity === 2;
 
+  function selectOperation(name: OperationName) {
+    setOperation(name);
+    // The second field is hidden for unary operations, so its error would come back stale.
+    if (getOperation(name).arity === 1) {
+      setFieldErrors(({ a }) => ({ a }));
+    }
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -59,7 +67,7 @@ export default function Calculator() {
         controller.signal,
       );
       const expression = needsB
-        ? `${formatNumber(res.a)} ${op.symbol} ${formatNumber(res.b ?? 0)}`
+        ? `${formatNumber(res.a)} ${op.symbol} ${formatNumber(res.b ?? parsedB!.value)}`
         : `${op.symbol}${formatNumber(res.a)}`;
       setStatus({ kind: 'success', expression, result: res.result });
     } catch (err) {
@@ -86,7 +94,7 @@ export default function Calculator() {
             aria-pressed={o.name === operation}
             aria-label={o.label}
             title={o.label}
-            onClick={() => setOperation(o.name)}
+            onClick={() => selectOperation(o.name)}
           >
             {o.symbol}
           </button>
