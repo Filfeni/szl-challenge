@@ -1,0 +1,29 @@
+# VCS / editors
+.git
+.gitignore
+.idea
+.vscode
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Backend build and test output
+backend/bin
+backend/coverage.out
+backend/coverage.html
+**/*.exe
+**/*.test
+
+# Frontend dependencies and build output (rebuilt inside the image)
+frontend/node_modules
+frontend/dist
+frontend/coverage
+
+# Local env and logs
+**/*.local
+**/*.log
+.env
+.env.*
