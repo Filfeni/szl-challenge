@@ -1,0 +1,25 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Backend
+backend/bin/
+backend/coverage.out
+backend/coverage.html
+*.exe
+*.test
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+*.local
+*.log
+
+# Env
+.env
+.env.*
+!.env.example
