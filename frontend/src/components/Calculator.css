@@ -1,0 +1,145 @@
+/* Colors in one place, so the theme is easy to change */
+:root {
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --text: #1f2430;
+  --muted: #6b7280;
+  --border: #d9dce3;
+  --accent: #2563eb;
+  --error: #dc2626;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
+
+.calculator {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.calculator__title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Operation buttons: a 4-column grid */
+.calculator__ops {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.calculator__ops legend {
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.calculator__op {
+  padding: 10px 0;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.calculator__op[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+/* Inputs side by side */
+.calculator__inputs {
+  display: flex;
+  gap: 12px;
+}
+
+.calculator__field {
+  flex: 1;
+  min-width: 0; /* lets the two inputs shrinkk evenly */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calculator__field input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.calculator__field input[aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+.calculator__field-error,
+.calculator__error {
+  color: var(--error);
+  font-size: 0.875rem;
+}
+
+.calculator__submit {
+  padding: 12px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.calculator__submit:disabled {
+  opacity: 0.6;
+}
+
+/* Result area, right-aligned like a calculator screen */
+.calculator__display {
+  min-height: 64px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  background: var(--bg);
+  border-radius: 8px;
+}
+
+.calculator__expression {
+  color: var(--muted);
+}
+
+.calculator__result {
+  font-size: 2rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* For phones */
+@media (max-width: 480px) {
+  .calculator {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .calculator__inputs {
+    flex-direction: column;
+  }
+}

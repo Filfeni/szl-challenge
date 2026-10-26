@@ -1,9 +1,5 @@
-function App() {
-  return (
-    <main>
-      <h1>Calculator</h1>
-    </main>
-  )
-}
+import Calculator from './components/Calculator';
 
-export default App
+export default function App() {
+  return <Calculator />;
+}
